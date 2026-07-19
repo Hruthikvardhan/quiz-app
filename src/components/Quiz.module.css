@@ -1,0 +1,276 @@
+/* ============================================================
+   Quiz.module.css
+   ============================================================ */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 40px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 680px;
+}
+
+/* ── Top bar ───────────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.topItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.topRight {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.topLabel {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+.topValue {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.topTotal {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.scoreVal {
+  color: var(--accent);
+}
+
+/* ── Timer pill ────────────────────────────────────────────── */
+.timerPill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 22px;
+  transition: border-color 0.3s;
+}
+
+.timerWarn {
+  border-color: rgba(239, 68, 68, 0.6);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.8; }
+}
+
+.timerNum {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.timerNumWarn {
+  color: var(--red);
+}
+
+.timerS {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-sub);
+  margin-left: 1px;
+}
+
+.timerTrack {
+  width: 60px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.timerBar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: width 1s linear, background 0.3s ease;
+}
+
+.timerBarWarn {
+  background: var(--red);
+}
+
+/* ── Progress bar ──────────────────────────────────────────── */
+.progressTrack {
+  height: 5px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--accent-dk), var(--accent-lt));
+  transition: width 0.5s ease;
+}
+
+/* ── Category tag ──────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 6px;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+/* ── Question card ─────────────────────────────────────────── */
+.questionCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 26px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.questionText {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Options grid ──────────────────────────────────────────── */
+.optionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* ── Option button ─────────────────────────────────────────── */
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 13px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  background: var(--bg-base);
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.optionDefault:not(:disabled):hover {
+  border-color: var(--border-mid);
+  background: var(--bg-hover);
+}
+
+.optionDefault:disabled {
+  cursor: default;
+}
+
+.optionCorrect {
+  background: var(--green-bg);
+  border-color: var(--green);
+  color: #86efac;
+  cursor: default;
+}
+
+.optionWrong {
+  background: var(--red-bg);
+  border-color: var(--red);
+  color: #fca5a5;
+  cursor: default;
+}
+
+.optionDimmed {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.optionLetter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-sub);
+  margin-top: 1px;
+}
+
+.optionText {
+  flex: 1;
+}
+
+/* ── Next button ───────────────────────────────────────────── */
+.nextWrap {
+  margin-top: 4px;
+}
+
+.nextBtn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-radius: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dk));
+  color: #06090f;
+  letter-spacing: 0.03em;
+  transition: all 0.18s;
+}
+
+.nextBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .questionText  { font-size: 15px; }
+  .option        { font-size: 14px; padding: 12px 14px; }
+  .timerPill     { padding: 8px 14px; }
+}

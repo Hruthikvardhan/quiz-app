@@ -1,0 +1,195 @@
+/* ============================================================
+   Home.module.css
+   ============================================================ */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.heroEmoji {
+  font-size: 64px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.4));
+}
+
+.title {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0 0 10px;
+  background: linear-gradient(135deg, var(--accent-lt), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-sub);
+  font-size: 15px;
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 28px 26px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Field ─────────────────────────────────────────────────── */
+.field {
+  margin-bottom: 22px;
+}
+
+.label {
+  display: block;
+  color: var(--text-sub);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Chip grids ────────────────────────────────────────────── */
+.catGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.row3 {
+  display: flex;
+  gap: 8px;
+}
+
+.row3 > * {
+  flex: 1;
+}
+
+/* ── Chip button ───────────────────────────────────────────── */
+.chipBtn {
+  padding: 11px 14px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: left;
+}
+
+.chipBtn:hover {
+  border-color: var(--border-mid);
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.chipActive {
+  border-color: var(--chip-accent, var(--accent));
+  background: color-mix(in srgb, var(--chip-accent, var(--accent)) 15%, transparent);
+  color: var(--chip-accent, var(--accent));
+}
+
+.chipNum {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.chipEmoji {
+  margin-right: 8px;
+}
+
+/* ── Actions ───────────────────────────────────────────────── */
+.actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primaryBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--r-md);
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dk));
+  color: #06090f;
+  letter-spacing: 0.03em;
+  transition: all 0.18s;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+.primaryBtn:disabled {
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.ghostBtn {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  transition: all 0.18s;
+}
+
+.ghostBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .title    { font-size: 36px; }
+  .card     { padding: 22px 18px; }
+  .catGrid  { grid-template-columns: 1fr; }
+}

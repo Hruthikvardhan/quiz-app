@@ -1,0 +1,280 @@
+/* ============================================================
+   Results.module.css
+   ============================================================ */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 48px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Main score card ───────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+/* ── SVG Ring ──────────────────────────────────────────────── */
+.ringWrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 22px;
+}
+
+.ring {
+  width: 150px;
+  height: 150px;
+  /* Start arc at the top */
+  transform: rotate(-90deg);
+}
+
+.ringInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringPct {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.ringFrac {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-top: 4px;
+}
+
+/* ── Performance text ──────────────────────────────────────── */
+.perfLabel {
+  font-size: 26px;
+  font-weight: 900;
+  margin: 0 0 8px;
+}
+
+.perfSub {
+  color: var(--text-sub);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+
+.playerName {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ── Stats chips ───────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.statChip {
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statGreen {
+  background: var(--green-bg);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.statRed {
+  background: var(--red-bg);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.statNum {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.statGreen .statNum { color: var(--green); }
+.statRed   .statNum { color: var(--red); }
+
+.statLabel {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.statGreen .statLabel { color: #86efac; }
+.statRed   .statLabel { color: #fca5a5; }
+
+/* ── Action buttons ────────────────────────────────────────── */
+.primaryBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dk));
+  color: #06090f;
+  letter-spacing: 0.03em;
+  transition: all 0.18s;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+.rowBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.ghostBtn {
+  flex: 2;
+  padding: 13px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  transition: all 0.18s;
+}
+
+.ghostBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+.shareBtn {
+  flex: 1;
+  padding: 13px;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  transition: all 0.2s;
+}
+
+.shareCopied {
+  color: var(--green);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* ── Review toggle ─────────────────────────────────────────── */
+.reviewToggle {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  transition: all 0.18s;
+}
+
+.reviewToggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+/* ── Review list ───────────────────────────────────────────── */
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reviewItem {
+  background: var(--bg-surface);
+  border-radius: 15px;
+  padding: 18px 20px;
+}
+
+.reviewOk  { border: 1px solid rgba(16,  185, 129, 0.3); }
+.reviewBad { border: 1px solid rgba(239, 68,  68,  0.3); }
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reviewQ {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reviewBadge {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.badgeOk  { color: var(--green); background: var(--green-bg); }
+.badgeBad { color: var(--red);   background: var(--red-bg);   }
+
+.reviewQuestion {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.reviewYours {
+  color: #fca5a5;
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+
+.reviewCorrect {
+  color: #86efac;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .card    { padding: 26px 18px; }
+  .rowBtns { flex-direction: column; }
+}

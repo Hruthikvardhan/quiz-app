@@ -1,0 +1,189 @@
+/* ============================================================
+   Leaderboard.module.css
+   ============================================================ */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 48px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+
+.backBtn {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: var(--text-sub);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.18s;
+}
+
+.backBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text);
+  margin: 0 0 3px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ── Filter chips ──────────────────────────────────────────── */
+.filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filterChip {
+  flex: 1;
+  padding: 9px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-sub);
+  transition: all 0.18s;
+}
+
+.filterChip:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+.filterActive {
+  border-color: var(--fc, var(--accent));
+  background: color-mix(in srgb, var(--fc, var(--accent)) 15%, transparent);
+  color: var(--fc, var(--accent));
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.empty {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 60px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.emptyIcon  { font-size: 44px; }
+.emptyText  { color: var(--text-sub); font-size: 14px; }
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Score list ────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 14px 18px;
+  transition: border-color 0.18s;
+}
+
+.row:hover {
+  border-color: var(--border-mid);
+}
+
+.rowTop {
+  background: rgba(245, 158, 11, 0.07);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+/* Rank badge */
+.rank {
+  font-size: 22px;
+  min-width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Name + meta */
+.info   { flex: 1; min-width: 0; }
+.name   { font-weight: 800; font-size: 15px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meta   { color: var(--text-muted); font-size: 11px; margin-top: 2px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+
+.diffBadge {
+  font-weight: 800;
+  font-size: 11px;
+}
+
+/* Score column */
+.score     { text-align: right; flex-shrink: 0; }
+.scorePct  { font-size: 20px; font-weight: 900; line-height: 1; }
+.scoreFrac { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+
+/* ── Clear button ──────────────────────────────────────────── */
+.clearBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--red);
+  transition: all 0.18s;
+  margin-top: 4px;
+}
+
+.clearBtn:hover {
+  background: var(--red-bg);
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .filters { flex-wrap: wrap; }
+}

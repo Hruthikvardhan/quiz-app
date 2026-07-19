@@ -1,0 +1,123 @@
+/* ============================================================
+   QuizMaster — Global Styles
+   index.css
+   ============================================================ */
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Background layers */
+  --bg-base:      #07090f;
+  --bg-surface:   #0d1220;
+  --bg-elevated:  #111827;
+  --bg-hover:     #151e30;
+
+  /* Borders */
+  --border:       #1c2840;
+  --border-mid:   #253352;
+  --border-light: #2d3f60;
+
+  /* Brand / Accent */
+  --accent:       #f59e0b;
+  --accent-lt:    #fcd34d;
+  --accent-dk:    #d97706;
+
+  /* Semantic */
+  --green:        #10b981;
+  --green-bg:     #042b1a;
+  --red:          #ef4444;
+  --red-bg:       #2b0808;
+  --blue:         #3b82f6;
+  --blue-bg:      #061530;
+
+  /* Text */
+  --text:         #e8edf5;
+  --text-sub:     #7d92b0;
+  --text-muted:   #3d506a;
+
+  /* Radii */
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   22px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-base);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select {
+  font-family: inherit;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar            { width: 5px; }
+::-webkit-scrollbar-track      { background: var(--bg-base); }
+::-webkit-scrollbar-thumb      { background: var(--border-mid); border-radius: 3px; }
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes timerShrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* ── Utility animation classes ────────────────────────────── */
+.anim-fadeUp  { animation: fadeUp  0.4s ease both; }
+.anim-slideUp { animation: slideUp 0.28s ease both; }
+.anim-popIn   { animation: popIn   0.35s ease both; }
+
+/* ── Responsive helpers ───────────────────────────────────── */
+@media (max-width: 480px) {
+  :root { font-size: 15px; }
+}
