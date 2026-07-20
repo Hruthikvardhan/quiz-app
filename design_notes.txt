@@ -1,0 +1,222 @@
+================================================================
+        DESIGN NOTES DOCUMENT
+        Project  : QuizMaster
+        Author   : Hruthik Vardhan
+        Date     : July 2026
+        Version  : 1.0
+================================================================
+NOTE: These are paper-level design notes describing layout,
+      colors, and component structure. No Figma used.
+================================================================
+
+----------------------------------------------------------------
+1. COLOR PALETTE (Dark Theme)
+----------------------------------------------------------------
+
+  Background Base    : #07090f  (very dark navy)
+  Surface Cards      : #0d1220  (dark blue-grey)
+  Hover State        : #111827  (slightly lighter)
+  Border Default     : #1c2840  (subtle border)
+  Border Active      : #253352  (visible border)
+
+  Accent / Brand     : #f59e0b  (amber/gold)
+  Accent Light       : #fcd34d  (light gold)
+  Accent Dark        : #d97706  (dark gold)
+
+  Text Primary       : #e8edf5  (near white)
+  Text Secondary     : #7d92b0  (muted blue-grey)
+  Text Disabled      : #3d506a  (very muted)
+
+  Success Green      : #10b981  (correct answer)
+  Green Background   : #042b1a  (correct answer bg)
+  Error Red          : #ef4444  (wrong answer / timer warn)
+  Red Background     : #2b0808  (wrong answer bg)
+  Info Blue          : #3b82f6  (question count chip)
+
+----------------------------------------------------------------
+2. TYPOGRAPHY
+----------------------------------------------------------------
+
+  Font Family : Inter (Google Fonts)
+  Fallback    : -apple-system, BlinkMacSystemFont, sans-serif
+
+  Sizes Used:
+    10px  = uppercase labels
+    11px  = badges, tags, meta info
+    12px  = secondary info
+    13px  = small buttons
+    14px  = body text, options
+    15px  = primary buttons, questions
+    17px  = question card text
+    18px  = player name
+    20px  = score / progress numbers
+    22px  = timer number
+    24px  = leaderboard title
+    26px  = performance label
+    32px  = score ring percentage
+    36px  = home title subtitle
+    46px  = home main title
+
+  Font Weights:
+    400 = regular body
+    500 = option text
+    600 = question text
+    700 = labels, ghost buttons
+    800 = section labels, names
+    900 = scores, titles, numbers
+
+----------------------------------------------------------------
+3. SCREEN LAYOUTS (Paper Design)
+----------------------------------------------------------------
+
+3.1 HOME SCREEN
+  ┌─────────────────────────────┐
+  │         🧠                  │
+  │      QuizMaster             │
+  │  Test your knowledge...     │
+  │                             │
+  │  ┌─────────────────────┐   │
+  │  │ Your Name           │   │
+  │  │ [input field______] │   │
+  │  │                     │   │
+  │  │ Category            │   │
+  │  │ [🌍 Gen] [🔬 Sci]  │   │
+  │  │ [⚽ Spo] [🎬 Mov]  │   │
+  │  │                     │   │
+  │  │ Difficulty          │   │
+  │  │ [Easy][Medium][Hard]│   │
+  │  │                     │   │
+  │  │ Questions           │   │
+  │  │  [ 5 ][ 10 ][ 15 ] │   │
+  │  │                     │   │
+  │  │ [🚀 Start Quiz    ] │   │
+  │  │ [🏆 Leaderboard   ] │   │
+  │  └─────────────────────┘   │
+  └─────────────────────────────┘
+
+3.2 QUIZ SCREEN
+  ┌─────────────────────────────┐
+  │ Question    [⏱ 24s]  Score │
+  │ 3 of 10     [====--]   2   │
+  │ ══════════════════════════  │
+  │ [General Knowledge · Medium]│
+  │                             │
+  │ ┌─────────────────────────┐ │
+  │ │ Question text goes here │ │
+  │ │ displayed clearly       │ │
+  │ └─────────────────────────┘ │
+  │                             │
+  │ [A] Option one              │
+  │ [B] Option two              │
+  │ [C] Option three            │
+  │ [D] Option four             │
+  │                             │
+  │ [    Next Question →      ] │
+  └─────────────────────────────┘
+
+3.3 RESULTS SCREEN
+  ┌─────────────────────────────┐
+  │  ┌──────────────────────┐   │
+  │  │     ( 75% ring )     │   │
+  │  │    👍 Good Job!      │   │
+  │  │  Solid effort...     │   │
+  │  │  Hruthik Vardhan     │   │
+  │  │  Science · Hard · 10Q│   │
+  │  └──────────────────────┘   │
+  │                             │
+  │  [  8 Correct ] [ 2 Wrong ] │
+  │                             │
+  │  [    🔄 Restart Quiz     ] │
+  │  [🏆 Leaderboard][📋 Share] │
+  │  [  ▼ Review All Questions] │
+  │                             │
+  │  Q1 ✓ Correct              │
+  │  Question text...           │
+  │  Correct: Paris             │
+  │                             │
+  │  Q2 ✗ Wrong                │
+  │  Question text...           │
+  │  Your answer: London        │
+  │  Correct: Berlin            │
+  └─────────────────────────────┘
+
+3.4 LEADERBOARD SCREEN
+  ┌─────────────────────────────┐
+  │ ← Back  🏆 Leaderboard     │
+  │         Top scores          │
+  │                             │
+  │ [All][Easy][Medium][Hard]   │
+  │                             │
+  │ 🥇 Hruthik    Science  92% │
+  │ 🥈 Vardhan    Movies   85% │
+  │ 🥉 Player3    Sports   78% │
+  │ #4  Player4   General  70% │
+  │ #5  Player5   Science  65% │
+  │                             │
+  │ [🗑 Clear All Scores      ] │
+  └─────────────────────────────┘
+
+----------------------------------------------------------------
+4. COMPONENT STRUCTURE
+----------------------------------------------------------------
+
+  App.jsx
+  ├── Home.jsx
+  │     ├── Name input field
+  │     ├── Category chip grid (2x2)
+  │     ├── Difficulty chip row (3)
+  │     └── Amount chip row (3)
+  │
+  ├── Quiz.jsx
+  │     ├── Top bar (Q count + Timer + Score)
+  │     ├── Progress bar
+  │     ├── Category tag
+  │     ├── Question card
+  │     ├── Option buttons (x4)
+  │     └── Next button
+  │
+  ├── Results.jsx
+  │     ├── SVG score ring
+  │     ├── Performance message
+  │     ├── Stat chips (correct/wrong)
+  │     ├── Action buttons
+  │     └── Review list (expandable)
+  │
+  └── Leaderboard.jsx
+        ├── Header + back button
+        ├── Filter chips
+        ├── Score rows list
+        └── Clear button
+
+----------------------------------------------------------------
+5. ANIMATIONS
+----------------------------------------------------------------
+
+  fadeUp   : screens slide up from bottom on enter (0.4s ease)
+  slideUp  : next button appears smoothly (0.28s ease)
+  popIn    : results screen scales in (0.35s ease)
+  spin     : loading spinner rotates (0.8s linear infinite)
+  pulse    : timer pill pulses when warning (1s infinite)
+
+  Timer bar : shrinks with CSS transition: width 1s linear
+  Progress  : grows with CSS transition: width 0.5s ease
+  Score ring: draws with CSS transition: stroke-dashoffset 1.5s
+
+----------------------------------------------------------------
+6. RESPONSIVE BREAKPOINTS
+----------------------------------------------------------------
+
+  Mobile  : max-width 420px
+    - Single column category grid
+    - Smaller font sizes
+    - Reduced padding
+
+  Tablet  : max-width 480px
+    - Slightly smaller question text
+    - Compact option buttons
+
+  Desktop : 680px max-width for quiz, 580px for results
+
+================================================================
+END OF DESIGN NOTES
+================================================================

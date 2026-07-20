@@ -1,0 +1,152 @@
+================================================================
+        REQUIREMENTS GATHERING DOCUMENT
+        Project  : QuizMaster
+        Author   : Hruthik Vardhan
+        Date     : July 2026
+        Version  : 1.0
+================================================================
+
+----------------------------------------------------------------
+1. PROJECT OVERVIEW
+----------------------------------------------------------------
+QuizMaster is a web-based quiz application built using React 18.
+It allows users to test their knowledge across multiple categories
+with a live countdown timer, scoring system, and leaderboard.
+
+----------------------------------------------------------------
+2. STAKEHOLDERS
+----------------------------------------------------------------
+Developer     : Hruthik Vardhan
+End Users     : Students, knowledge enthusiasts, interview prep
+API Provider  : Open Trivia DB (opentdb.com) - Free Public API
+
+----------------------------------------------------------------
+3. FUNCTIONAL REQUIREMENTS
+----------------------------------------------------------------
+
+3.1 HOME SCREEN
+  - User must enter their name before starting
+  - User can select quiz category:
+      * General Knowledge
+      * Science
+      * Sports
+      * Movies
+  - User can select difficulty:
+      * Easy
+      * Medium
+      * Hard
+  - User can select number of questions:
+      * 5 / 10 / 15
+  - Start Quiz button disabled until name is entered
+  - Leaderboard button navigates to leaderboard screen
+
+3.2 QUIZ SCREEN
+  - Display current question number (e.g. Q1 of 10)
+  - Display progress bar showing completion percentage
+  - Countdown timer of 30 seconds per question
+  - Timer bar shrinks visually as time passes
+  - Timer turns red when under 10 seconds
+  - Timer pulses when under 10 seconds
+  - Auto-advance to next question when timer hits 0
+  - Display 4 answer options as clickable cards
+  - Correct answer highlights GREEN after selection
+  - Wrong answer highlights RED after selection
+  - All options disabled after selection
+  - Display live score in top right corner
+  - Next Question button appears after selection
+  - Last question shows "See Results" button
+
+3.3 RESULTS SCREEN
+  - Display animated SVG score ring with percentage
+  - Performance message based on score:
+      * 80% and above  = Excellent!
+      * 60% to 79%     = Good Job!
+      * Below 60%      = Keep Practicing!
+  - Show correct answer count
+  - Show wrong answer count
+  - Show player name, category, difficulty
+  - Review all questions with correct answers
+  - Show user's answer vs correct answer
+  - Share score button (copy to clipboard)
+  - Restart Quiz button
+  - Leaderboard button
+
+3.4 LEADERBOARD SCREEN
+  - Display top 10 scores
+  - Scores persist across browser sessions (localStorage)
+  - Filter scores by difficulty (All / Easy / Medium / Hard)
+  - Show player name, score, percentage, category, date
+  - Gold / Silver / Bronze medals for top 3
+  - Clear all scores button
+  - Back button to home screen
+
+----------------------------------------------------------------
+4. NON FUNCTIONAL REQUIREMENTS
+----------------------------------------------------------------
+
+4.1 PERFORMANCE
+  - App should load within 3 seconds
+  - API response should display within 2 seconds
+  - Timer must be accurate to 1 second
+
+4.2 USABILITY
+  - Fully responsive on mobile, tablet, desktop
+  - Dark theme throughout
+  - Smooth animations between screens
+  - Clear error messages if API fails
+
+4.3 RELIABILITY
+  - Handle API failure gracefully with error screen
+  - Handle network timeout
+  - localStorage fallback if storage fails
+
+4.4 COMPATIBILITY
+  - Chrome (latest)
+  - Firefox (latest)
+  - Edge (latest)
+  - Mobile browsers (iOS Safari, Android Chrome)
+
+----------------------------------------------------------------
+5. TECHNICAL REQUIREMENTS
+----------------------------------------------------------------
+
+  - React 18 with functional components only
+  - No class components
+  - No Redux or external state management
+  - Hooks: useState, useEffect, useCallback, useMemo, useRef
+  - Custom Hooks: useTimer, useQuiz
+  - CSS Modules for styling
+  - Open Trivia DB API (free, no API key needed)
+  - localStorage for leaderboard persistence
+  - Deployed on Vercel
+
+----------------------------------------------------------------
+6. API REQUIREMENTS
+----------------------------------------------------------------
+
+  Endpoint : https://opentdb.com/api.php
+  Method   : GET
+  Params   :
+    amount     = number of questions (5, 10, 15)
+    category   = category ID (9, 11, 17, 21)
+    difficulty = easy / medium / hard
+    type       = multiple
+
+  Category IDs:
+    9  = General Knowledge
+    11 = Movies
+    17 = Science
+    21 = Sports
+
+----------------------------------------------------------------
+7. OUT OF SCOPE
+----------------------------------------------------------------
+  - User authentication / login
+  - Backend database
+  - Multiplayer mode
+  - Custom question creation
+  - Social media sharing (only clipboard copy)
+
+================================================================
+END OF REQUIREMENTS DOCUMENT
+================================================================

@@ -1,0 +1,222 @@
+================================================================
+        DEPLOYMENT DOCUMENT
+        Project  : QuizMaster
+        Author   : Hruthik Vardhan
+        Date     : July 2026
+        Platform : Vercel (Free Tier)
+        Version  : 1.0
+================================================================
+
+----------------------------------------------------------------
+1. PRE-DEPLOYMENT CHECKLIST
+----------------------------------------------------------------
+
+  ✅ All features working locally (npm start)
+  ✅ No console errors in browser
+  ✅ Responsive on mobile and desktop
+  ✅ API calls working (Open Trivia DB)
+  ✅ localStorage working (leaderboard)
+  ✅ Code pushed to GitHub repository
+  ✅ .gitignore configured (node_modules, build, .env)
+  ✅ README.md written
+
+----------------------------------------------------------------
+2. GITHUB SETUP (Required before Vercel)
+----------------------------------------------------------------
+
+STEP 1 — Initialize Git in project
+  Command:
+    cd "your-project-folder"
+    git init
+
+STEP 2 — Create .gitignore file
+  Content:
+    node_modules/
+    build/
+    .env
+    .env.local
+    .DS_Store
+    Thumbs.db
+    .vscode/
+    coverage/
+
+STEP 3 — Stage all files
+  Command:
+    git add .
+
+STEP 4 — First commit
+  Command:
+    git commit -m "QuizMaster - initial commit"
+
+STEP 5 — Create repo on GitHub
+  - Go to github.com
+  - Click New repository
+  - Name: quiz-app
+  - Visibility: Public
+  - Do NOT add README (already have one)
+  - Click Create repository
+
+STEP 6 — Connect and push
+  Command:
+    git branch -M main
+    git remote add origin https://github.com/YOUR_USERNAME/quiz-app.git
+    git push -u origin main
+
+STEP 7 — Verify on GitHub
+  - Open your GitHub repo URL
+  - All files should be visible
+  - node_modules should NOT be there
+
+----------------------------------------------------------------
+3. VERCEL DEPLOYMENT STEPS
+----------------------------------------------------------------
+
+STEP 1 — Create Vercel Account
+  - Go to vercel.com
+  - Click "Sign Up"
+  - Choose "Continue with GitHub"
+  - Authorize Vercel to access GitHub
+  - Account created ✅
+
+STEP 2 — Import Project
+  - On Vercel dashboard click "Add New Project"
+  - Click "Import" next to your quiz-app repository
+  - Vercel automatically detects it is a React app
+
+STEP 3 — Configure Build Settings
+  Vercel auto-detects these for Create React App:
+    Framework Preset : Create React App
+    Build Command    : npm run build
+    Output Directory : build
+    Install Command  : npm install
+  
+  No changes needed — keep defaults ✅
+
+STEP 4 — Environment Variables
+  - Our app has NO environment variables
+  - Open Trivia DB needs no API key
+  - Skip this section ✅
+
+STEP 5 — Deploy
+  - Click "Deploy" button
+  - Vercel runs:
+      1. npm install   (installs dependencies)
+      2. npm run build (creates optimized build)
+      3. Deploys build folder to CDN
+  - Takes about 1-2 minutes
+
+STEP 6 — Get Your Live URL
+  - Vercel gives URL like:
+    https://quiz-app-hruthik.vercel.app
+  - Click "Visit" to open your live app
+  - Share this URL with anyone! 🌍
+
+----------------------------------------------------------------
+4. WHAT VERCEL DOES AUTOMATICALLY
+----------------------------------------------------------------
+
+  ✅ Free SSL certificate (https://)
+  ✅ Global CDN (fast loading worldwide)
+  ✅ Auto-deploy on every GitHub push
+  ✅ Preview deployments for every branch
+  ✅ Custom domain support
+  ✅ Zero server management
+
+----------------------------------------------------------------
+5. CONTINUOUS DEPLOYMENT (After Setup)
+----------------------------------------------------------------
+
+  Every time you push code to GitHub:
+    git add .
+    git commit -m "your message"
+    git push
+
+  Vercel automatically:
+    1. Detects the push
+    2. Runs npm run build
+    3. Deploys new version
+    4. Same URL updates automatically
+
+  No manual deployment needed ever again ✅
+
+----------------------------------------------------------------
+6. CUSTOM DOMAIN (Optional)
+----------------------------------------------------------------
+
+  If you have a domain like quizmaster.com:
+    - Go to Vercel project settings
+    - Click "Domains"
+    - Add your domain
+    - Update DNS settings at your domain provider
+    - Vercel handles SSL automatically
+
+  Free Vercel domain format:
+    https://quiz-app-YOUR_USERNAME.vercel.app
+
+----------------------------------------------------------------
+7. VERCEL FREE TIER LIMITS
+----------------------------------------------------------------
+
+  Deployments    : 100 per day
+  Bandwidth      : 100 GB per month
+  Build time     : 100 hours per month
+  Team members   : 1 (personal projects)
+  Custom domains : Unlimited
+
+  For QuizMaster these limits are MORE than enough ✅
+
+----------------------------------------------------------------
+8. TROUBLESHOOTING COMMON ISSUES
+----------------------------------------------------------------
+
+  ISSUE: Build fails on Vercel
+  FIX  : Run "npm run build" locally first
+         Fix any errors shown, then push again
+
+  ISSUE: App works locally but not on Vercel
+  FIX  : Check browser console for errors
+         Usually import path case sensitivity issue
+
+  ISSUE: API not working on live site
+  FIX  : Open Trivia DB works from any domain
+         No CORS issues with this API
+
+  ISSUE: Leaderboard not saving
+  FIX  : localStorage works in production
+         Check if browser is in private/incognito mode
+
+  ISSUE: Old version showing after deploy
+  FIX  : Hard refresh browser: Ctrl + Shift + R
+         Or clear browser cache
+
+----------------------------------------------------------------
+9. POST DEPLOYMENT CHECKLIST
+----------------------------------------------------------------
+
+  ✅ Open live URL in browser
+  ✅ Test Home screen - all selections work
+  ✅ Start quiz - questions load from API
+  ✅ Timer counts down correctly
+  ✅ Answer selection works (green/red)
+  ✅ Results screen shows correct score
+  ✅ Leaderboard saves and displays scores
+  ✅ Share button copies to clipboard
+  ✅ Test on mobile browser
+  ✅ Share URL with others for feedback
+
+----------------------------------------------------------------
+10. DEPLOYMENT INFO RECORD
+----------------------------------------------------------------
+
+  Developer    : Hruthik Vardhan
+  Repository   : https://github.com/YOUR_USERNAME/quiz-app
+  Live URL     : https://quiz-app-YOUR_USERNAME.vercel.app
+  Deploy Date  : July 2026
+  Platform     : Vercel (Free)
+  Build Tool   : Create React App
+  Node Version : 18.x
+  React Version: 18.2.0
+
+================================================================
+END OF DEPLOYMENT DOCUMENT
+================================================================

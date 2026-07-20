@@ -1,0 +1,452 @@
+================================================================
+        MANUAL TESTING DOCUMENT
+        Project  : QuizMaster
+        Author   : Hruthik Vardhan
+        Date     : July 2026
+        Version  : 1.0
+================================================================
+LEGEND:
+  PASS = Test passed as expected
+  FAIL = Test failed (note the issue)
+  TC   = Test Case
+================================================================
+
+----------------------------------------------------------------
+MODULE 1 — HOME SCREEN
+----------------------------------------------------------------
+
+TC-H-01 : Page Load
+  Steps   : Open the app URL in browser
+  Expected: Home screen loads with title "QuizMaster"
+  Result  : PASS
+
+TC-H-02 : Start button disabled without name
+  Steps   : Leave name field empty, click Start Quiz
+  Expected: Button is disabled, cannot click
+  Result  : PASS
+
+TC-H-03 : Start button enables with name
+  Steps   : Type "Hruthik" in name field
+  Expected: Start Quiz button becomes clickable
+  Result  : PASS
+
+TC-H-04 : Name field max length
+  Steps   : Type more than 22 characters
+  Expected: Input stops accepting after 22 characters
+  Result  : PASS
+
+TC-H-05 : Category selection - General Knowledge
+  Steps   : Click "General Knowledge" chip
+  Expected: Chip highlights with amber/gold color
+  Result  : PASS
+
+TC-H-06 : Category selection - Science
+  Steps   : Click "Science" chip
+  Expected: Science chip highlights, previous deselects
+  Result  : PASS
+
+TC-H-07 : Category selection - Sports
+  Steps   : Click "Sports" chip
+  Expected: Sports chip highlights, previous deselects
+  Result  : PASS
+
+TC-H-08 : Category selection - Movies
+  Steps   : Click "Movies" chip
+  Expected: Movies chip highlights, previous deselects
+  Result  : PASS
+
+TC-H-09 : Difficulty - Easy
+  Steps   : Click "Easy" chip
+  Expected: Easy highlights with green color
+  Result  : PASS
+
+TC-H-10 : Difficulty - Medium
+  Steps   : Click "Medium" chip
+  Expected: Medium highlights with amber color
+  Result  : PASS
+
+TC-H-11 : Difficulty - Hard
+  Steps   : Click "Hard" chip
+  Expected: Hard highlights with red color
+  Result  : PASS
+
+TC-H-12 : Question count - 5
+  Steps   : Click "5" chip
+  Expected: 5 highlights with blue color
+  Result  : PASS
+
+TC-H-13 : Question count - 10
+  Steps   : Click "10" chip
+  Expected: 10 highlights, 5 deselects
+  Result  : PASS
+
+TC-H-14 : Question count - 15
+  Steps   : Click "15" chip
+  Expected: 15 highlights, 10 deselects
+  Result  : PASS
+
+TC-H-15 : Enter key submits form
+  Steps   : Type name, press Enter key
+  Expected: Quiz starts (fetching screen appears)
+  Result  : PASS
+
+TC-H-16 : Leaderboard navigation
+  Steps   : Click "View Leaderboard" button
+  Expected: Leaderboard screen opens
+  Result  : PASS
+
+----------------------------------------------------------------
+MODULE 2 — LOADING / FETCHING STATE
+----------------------------------------------------------------
+
+TC-L-01 : Loading spinner appears
+  Steps   : Click Start Quiz with valid settings
+  Expected: Spinner appears with "Fetching questions..." text
+  Result  : PASS
+
+TC-L-02 : Loading transitions to quiz
+  Steps   : Wait for API response
+  Expected: Spinner disappears, quiz screen loads
+  Result  : PASS
+
+TC-L-03 : API error handling
+  Steps   : Disconnect internet, start quiz
+  Expected: Error screen with message and Try Again button
+  Result  : PASS
+
+TC-L-04 : Try Again button works
+  Steps   : On error screen, click Try Again
+  Expected: Goes back to Home screen
+  Result  : PASS
+
+----------------------------------------------------------------
+MODULE 3 — QUIZ SCREEN
+----------------------------------------------------------------
+
+TC-Q-01 : Question counter displays correctly
+  Steps   : Start 10 question quiz
+  Expected: Shows "1 of 10" on first question
+  Result  : PASS
+
+TC-Q-02 : Progress bar starts empty
+  Steps   : On first question
+  Expected: Progress bar shows 0% fill
+  Result  : PASS
+
+TC-Q-03 : Progress bar advances
+  Steps   : Answer first question, go to second
+  Expected: Progress bar shows 10% fill
+  Result  : PASS
+
+TC-Q-04 : Timer starts at 30
+  Steps   : On any question
+  Expected: Timer shows 30 seconds
+  Result  : PASS
+
+TC-Q-05 : Timer counts down
+  Steps   : Wait 5 seconds without answering
+  Expected: Timer shows 25 seconds
+  Result  : PASS
+
+TC-Q-06 : Timer bar shrinks
+  Steps   : Watch timer bar
+  Expected: Yellow bar shrinks from right to left
+  Result  : PASS
+
+TC-Q-07 : Timer turns red under 10 seconds
+  Steps   : Wait until timer reaches 9
+  Expected: Timer number and bar turn red
+  Result  : PASS
+
+TC-Q-08 : Timer pulses when warning
+  Steps   : Wait until timer reaches 9
+  Expected: Timer pill pulses/blinks
+  Result  : PASS
+
+TC-Q-09 : Timer auto advances question
+  Steps   : Do not answer, let timer reach 0
+  Expected: Moves to next question automatically
+  Result  : PASS
+
+TC-Q-10 : Timer resets on new question
+  Steps   : Go to next question
+  Expected: Timer resets back to 30 seconds
+  Result  : PASS
+
+TC-Q-11 : Correct answer highlights green
+  Steps   : Select the correct answer
+  Expected: Selected option highlights green
+  Result  : PASS
+
+TC-Q-12 : Wrong answer highlights red
+  Steps   : Select a wrong answer
+  Expected: Selected option highlights red
+  Result  : PASS
+
+TC-Q-13 : Correct answer shown after wrong selection
+  Steps   : Select wrong answer
+  Expected: Correct answer highlights green too
+  Result  : PASS
+
+TC-Q-14 : Other options dim after selection
+  Steps   : Select any answer
+  Expected: Unselected wrong options become dim (30% opacity)
+  Result  : PASS
+
+TC-Q-15 : Options disabled after selection
+  Steps   : Select an answer, click another option
+  Expected: Cannot select another option
+  Result  : PASS
+
+TC-Q-16 : Timer stops after selection
+  Steps   : Select an answer
+  Expected: Timer stops counting down
+  Result  : PASS
+
+TC-Q-17 : Next button appears after selection
+  Steps   : Select any answer
+  Expected: "Next Question →" button appears with animation
+  Result  : PASS
+
+TC-Q-18 : Score increments on correct answer
+  Steps   : Select correct answer
+  Expected: Score in top right increases by 1
+  Result  : PASS
+
+TC-Q-19 : Score does not increment on wrong answer
+  Steps   : Select wrong answer
+  Expected: Score stays the same
+  Result  : PASS
+
+TC-Q-20 : Last question shows See Results button
+  Steps   : Reach last question, select answer
+  Expected: Button shows "See Results" not "Next Question"
+  Result  : PASS
+
+TC-Q-21 : Category tag displays correctly
+  Steps   : Start Science quiz on Hard
+  Expected: Tag shows "Science · Hard"
+  Result  : PASS
+
+TC-Q-22 : 4 options always displayed
+  Steps   : Check every question
+  Expected: Always exactly 4 options shown
+  Result  : PASS
+
+TC-Q-23 : Options shuffled randomly
+  Steps   : Play same quiz twice
+  Expected: Option order is different each time
+  Result  : PASS
+
+----------------------------------------------------------------
+MODULE 4 — RESULTS SCREEN
+----------------------------------------------------------------
+
+TC-R-01 : Score percentage correct
+  Steps   : Get 8/10 correct
+  Expected: Shows 80%
+  Result  : PASS
+
+TC-R-02 : Excellent message at 80%+
+  Steps   : Score 80% or above
+  Expected: Shows "Excellent!" with green color
+  Result  : PASS
+
+TC-R-03 : Good Job message at 60-79%
+  Steps   : Score between 60 and 79%
+  Expected: Shows "Good Job!" with amber color
+  Result  : PASS
+
+TC-R-04 : Keep Practicing below 60%
+  Steps   : Score below 60%
+  Expected: Shows "Keep Practicing!" with red color
+  Result  : PASS
+
+TC-R-05 : SVG ring shows correct fill
+  Steps   : Score 75%
+  Expected: Ring shows 75% filled arc
+  Result  : PASS
+
+TC-R-06 : Correct count is accurate
+  Steps   : Get 7 correct out of 10
+  Expected: Correct chip shows 7
+  Result  : PASS
+
+TC-R-07 : Wrong count is accurate
+  Steps   : Get 7 correct out of 10
+  Expected: Wrong chip shows 3
+  Result  : PASS
+
+TC-R-08 : Player name displayed
+  Steps   : Check results screen
+  Expected: Shows the name entered on home screen
+  Result  : PASS
+
+TC-R-09 : Review section expands
+  Steps   : Click "Review All Questions"
+  Expected: Review list expands showing all questions
+  Result  : PASS
+
+TC-R-10 : Review shows correct answers
+  Steps   : Expand review
+  Expected: Each question shows the correct answer in green
+  Result  : PASS
+
+TC-R-11 : Review shows user wrong answer
+  Steps   : Expand review for a wrong question
+  Expected: Shows "Your answer: X" in red
+  Result  : PASS
+
+TC-R-12 : Timeout shows in review
+  Steps   : Let timer expire on a question, check review
+  Expected: Shows "Time expired" for that question
+  Result  : PASS
+
+TC-R-13 : Share button copies to clipboard
+  Steps   : Click Share button
+  Expected: Button changes to "Copied!" for 2.5 seconds
+  Result  : PASS
+
+TC-R-14 : Restart goes to home
+  Steps   : Click Restart Quiz
+  Expected: Goes back to Home screen
+  Result  : PASS
+
+TC-R-15 : Score saved to leaderboard
+  Steps   : Complete quiz, go to leaderboard
+  Expected: Score appears in leaderboard
+  Result  : PASS
+
+----------------------------------------------------------------
+MODULE 5 — LEADERBOARD SCREEN
+----------------------------------------------------------------
+
+TC-LB-01 : Scores display correctly
+  Steps   : Complete a quiz, open leaderboard
+  Expected: Score appears with name, category, date, %
+  Result  : PASS
+
+TC-LB-02 : Scores sorted by percentage
+  Steps   : Complete multiple quizzes with different scores
+  Expected: Highest % appears first
+  Result  : PASS
+
+TC-LB-03 : Gold medal for first place
+  Steps   : Check top score
+  Expected: 🥇 emoji shows next to first place
+  Result  : PASS
+
+TC-LB-04 : Silver medal for second place
+  Steps   : Check second score
+  Expected: 🥈 emoji shows next to second place
+  Result  : PASS
+
+TC-LB-05 : Bronze medal for third place
+  Steps   : Check third score
+  Expected: 🥉 emoji shows next to third place
+  Result  : PASS
+
+TC-LB-06 : Filter by Easy
+  Steps   : Click "Easy" filter chip
+  Expected: Only Easy difficulty scores show
+  Result  : PASS
+
+TC-LB-07 : Filter by Medium
+  Steps   : Click "Medium" filter chip
+  Expected: Only Medium difficulty scores show
+  Result  : PASS
+
+TC-LB-08 : Filter by Hard
+  Steps   : Click "Hard" filter chip
+  Expected: Only Hard difficulty scores show
+  Result  : PASS
+
+TC-LB-09 : Filter All shows everything
+  Steps   : Click "All" filter chip
+  Expected: All scores show regardless of difficulty
+  Result  : PASS
+
+TC-LB-10 : Scores persist after page refresh
+  Steps   : Complete quiz, refresh browser, open leaderboard
+  Expected: Previous scores still there
+  Result  : PASS
+
+TC-LB-11 : Empty state when no scores
+  Steps   : Clear scores, open leaderboard
+  Expected: Shows empty state message
+  Result  : PASS
+
+TC-LB-12 : Clear scores button works
+  Steps   : Click "Clear All Scores", confirm
+  Expected: All scores removed, empty state shows
+  Result  : PASS
+
+TC-LB-13 : Back button works
+  Steps   : Click Back button
+  Expected: Goes back to Home screen
+  Result  : PASS
+
+TC-LB-14 : Max 10 scores shown
+  Steps   : Complete more than 10 quizzes
+  Expected: Only top 10 scores shown
+  Result  : PASS
+
+----------------------------------------------------------------
+MODULE 6 — RESPONSIVE / MOBILE TESTING
+----------------------------------------------------------------
+
+TC-M-01 : Home screen on mobile (375px)
+  Steps   : Open on mobile or resize to 375px
+  Expected: All elements visible, no overflow
+  Result  : PASS
+
+TC-M-02 : Category grid stacks on mobile
+  Steps   : Check home screen on mobile
+  Expected: Category chips stack in single column
+  Result  : PASS
+
+TC-M-03 : Quiz screen on mobile
+  Steps   : Open quiz on mobile
+  Expected: Questions and options fully readable
+  Result  : PASS
+
+TC-M-04 : Options tappable on mobile
+  Steps   : Tap answer options on mobile
+  Expected: Options respond to tap, correct behavior
+  Result  : PASS
+
+TC-M-05 : Results screen on mobile
+  Steps   : View results on mobile
+  Expected: Score ring, chips, buttons all visible
+  Result  : PASS
+
+TC-M-06 : Leaderboard on mobile
+  Steps   : View leaderboard on mobile
+  Expected: Score rows readable, no overflow
+  Result  : PASS
+
+TC-M-07 : Landscape mode
+  Steps   : Rotate mobile to landscape
+  Expected: App still usable, no major layout breaks
+  Result  : PASS
+
+----------------------------------------------------------------
+TEST SUMMARY
+----------------------------------------------------------------
+
+  Total Test Cases : 65
+  Passed           : 65
+  Failed           : 0
+  Pass Rate        : 100%
+
+  Modules Tested:
+    Home Screen      : 16 cases  ✅
+    Loading State    :  4 cases  ✅
+    Quiz Screen      : 23 cases  ✅
+    Results Screen   : 15 cases  ✅
+    Leaderboard      : 14 cases  ✅
+    Mobile/Responsive:  7 cases  ✅
+
+================================================================
+END OF MANUAL TESTING DOCUMENT
+================================================================
