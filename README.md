@@ -6,7 +6,7 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 
 ## 🌍 Live Demo
 
-🔗 **[quizmaster-hruthik.vercel.app](https://quizmaster-hruthik.vercel.app)**
+🔗 **[quizmaster-hruthik.vercel.app](https://quiz-app-vhv.vercel.app/)**
 
 ---
 
