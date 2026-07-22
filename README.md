@@ -12,19 +12,20 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 
 ## 📸 Screenshots
 
-| Home Screen | Quiz Screen |
-|---|---|
-| ![Home](screenshots/home.png) | ![Quiz](screenshots/quiz.png) |
+| Home Screen                 | Quiz Screen               |
+| --------------------------- | ------------------------- |
+| ![Home](./ops/1%20home.png) | ![Quiz](./ops/2%20qu.png) |
 
-| Results Screen | Leaderboard |
-|---|---|
-| ![Results](screenshots/results.png) | ![Leaderboard](screenshots/leaderboard.png) |
+| Results Screen                | Leaderboard                          |
+| ----------------------------- | ------------------------------------ |
+| ![Results](./ops/4%20res.png) | ![Leaderboard](./ops/3%20leader.png) |
 
 ---
 
 ## ✨ Features
 
 ### 🏠 Home Screen
+
 - Player name input (required to start)
 - Select quiz **category** — General Knowledge, Science, Sports, Movies
 - Select **difficulty** — Easy, Medium, Hard
@@ -32,6 +33,7 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 - Navigate to leaderboard
 
 ### 🎯 Quiz Screen
+
 - Live question progress — **Q3 of 10**
 - Animated **progress bar** showing completion
 - **30-second countdown timer** per question
@@ -45,6 +47,7 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 - **Live score** display
 
 ### 🏆 Results Screen
+
 - Animated **SVG score ring** with percentage
 - Performance message:
   - 🏆 **Excellent!** — 80% and above
@@ -56,6 +59,7 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 - Restart Quiz button
 
 ### 📋 Leaderboard Screen
+
 - Top 10 scores **persisted via localStorage**
 - Filter scores by difficulty — All / Easy / Medium / Hard
 - 🥇 🥈 🥉 medals for top 3 positions
@@ -66,26 +70,26 @@ A full-featured, responsive Quiz Application built with **React 18** using only 
 
 ## 🛠 Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 18 | UI framework |
-| React Hooks | State and side effect management |
-| CSS Modules | Scoped component styling |
+| Technology         | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| React 18           | UI framework                              |
+| React Hooks        | State and side effect management          |
+| CSS Modules        | Scoped component styling                  |
 | Open Trivia DB API | Live quiz questions (free, no key needed) |
-| localStorage | Leaderboard persistence |
-| Vercel | Deployment |
+| localStorage       | Leaderboard persistence                   |
+| Vercel             | Deployment                                |
 
 ---
 
 ## ⚙️ Hooks Used
 
-| Hook | Where | Purpose |
-|---|---|---|
-| `useState` | All components | Local UI state management |
-| `useEffect` | App, Quiz, useTimer | Side effects, intervals, API calls |
-| `useCallback` | useQuiz, App, Quiz | Stable function references |
-| `useMemo` | useQuiz, Leaderboard | Derived data without recalculation |
-| `useRef` | useTimer, App | Interval ID storage, stale-closure fix |
+| Hook          | Where                | Purpose                                |
+| ------------- | -------------------- | -------------------------------------- |
+| `useState`    | All components       | Local UI state management              |
+| `useEffect`   | App, Quiz, useTimer  | Side effects, intervals, API calls     |
+| `useCallback` | useQuiz, App, Quiz   | Stable function references             |
+| `useMemo`     | useQuiz, Leaderboard | Derived data without recalculation     |
+| `useRef`      | useTimer, App        | Interval ID storage, stale-closure fix |
 
 ---
 
@@ -121,6 +125,7 @@ quiz-app/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 16 or above
 - npm or yarn
 
@@ -152,14 +157,15 @@ Questions are fetched from the free **[Open Trivia DB](https://opentdb.com/)** �
 GET https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple
 ```
 
-| Parameter | Values | Description |
-|---|---|---|
-| `amount` | 5, 10, 15 | Number of questions |
-| `category` | 9, 11, 17, 21 | Category ID |
-| `difficulty` | easy, medium, hard | Difficulty level |
-| `type` | multiple | Multiple choice only |
+| Parameter    | Values             | Description          |
+| ------------ | ------------------ | -------------------- |
+| `amount`     | 5, 10, 15          | Number of questions  |
+| `category`   | 9, 11, 17, 21      | Category ID          |
+| `difficulty` | easy, medium, hard | Difficulty level     |
+| `type`       | multiple           | Multiple choice only |
 
 **Category IDs used:**
+
 ```
 9  → General Knowledge
 11 → Movies
@@ -172,27 +178,37 @@ GET https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=mult
 ## 🧩 Key Technical Concepts
 
 ### 1. Custom Hook — useTimer
+
 Manages a 30-second countdown with:
+
 - Auto-reset when question changes (`resetKey` pattern)
 - Pause when answer is selected (`isActive` flag)
 - Stale-closure fix using `useRef` so the expire callback always reads the latest selected answer
 
 ### 2. Custom Hook — useQuiz
+
 A mini state machine with states:
+
 ```
 idle → loading → ready → (answering) → done
                 ↘ error
 ```
+
 Handles API fetching, answer selection, scoring, and review log.
 
 ### 3. Stale Closure Problem — Solved
+
 The timer interval captures `sel = null` at creation. Without a fix, it would never detect a user's answer. Solved by keeping `selRef` updated on every render:
+
 ```js
 const selRef = useRef(sel);
-useEffect(() => { selRef.current = sel; }, [sel]);
+useEffect(() => {
+  selRef.current = sel;
+}, [sel]);
 ```
 
 ### 4. CSS Modules
+
 Every component has its own `.module.css` file — zero class name collisions across the app.
 
 ---
@@ -216,6 +232,7 @@ Push to GitHub → Vercel detects change → Auto builds → Live URL updates
 ```
 
 **To deploy your own:**
+
 1. Push code to GitHub
 2. Go to [vercel.com](https://vercel.com) → Import Project
 3. Select your GitHub repo
@@ -225,13 +242,13 @@ Push to GitHub → Vercel detects change → Auto builds → Live URL updates
 
 ## 📄 Project Documents
 
-| Document | Description |
-|---|---|
-| `requirements.txt` | Functional and non-functional requirements |
-| `design_notes.txt` | Color palette, typography, screen layouts |
-| `sprints.txt` | 4 sprints, 16 tasks, 2 week timeline |
-| `manual_testing.txt` | 65 test cases across all screens |
-| `deployment.txt` | Step-by-step GitHub and Vercel guide |
+| Document             | Description                                |
+| -------------------- | ------------------------------------------ |
+| `requirements.txt`   | Functional and non-functional requirements |
+| `design_notes.txt`   | Color palette, typography, screen layouts  |
+| `sprints.txt`        | 4 sprints, 16 tasks, 2 week timeline       |
+| `manual_testing.txt` | 65 test cases across all screens           |
+| `deployment.txt`     | Step-by-step GitHub and Vercel guide       |
 
 ---
 

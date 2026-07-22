@@ -107,7 +107,7 @@ STEP 5 — Deploy
 
 STEP 6 — Get Your Live URL
   - Vercel gives URL like:
-    https://quiz-app-hruthik.vercel.app
+    https://quiz-app-vhv.vercel.app/
   - Click "Visit" to open your live app
   - Share this URL with anyone! 🌍
 
@@ -209,8 +209,8 @@ STEP 6 — Get Your Live URL
 ----------------------------------------------------------------
 
   Developer    : Hruthik Vardhan
-  Repository   : https://github.com/YOUR_USERNAME/quiz-app
-  Live URL     : https://quiz-app-YOUR_USERNAME.vercel.app
+  Repository   : https://github.com/Hruthikvardhan/quiz-app
+  Live URL     : https://quiz-app-vhv.vercel.app/
   Deploy Date  : July 2026
   Platform     : Vercel (Free)
   Build Tool   : Create React App
