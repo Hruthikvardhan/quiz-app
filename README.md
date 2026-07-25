@@ -271,7 +271,7 @@ Push to GitHub → Vercel detects change → Auto builds → Live URL updates
 **Hruthik Vardhan**
 
 - GitHub — [@hruthikvardhan](https://github.com/hruthikvardhan)
-- LinkedIn — [Hruthik Vardhan](https://linkedin.com/in/hruthikvardhan)
+- LinkedIn — [Hruthik Vardhan](https://www.linkedin.com/in/hruthik-vardhan/)
 
 ---
 
